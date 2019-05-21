@@ -2,10 +2,10 @@ import pandas as pd
 import numpy as np
 import math
 
-fp = '../第一问数据/深圳数据_v1.csv'
+fp = '../第一问数据/深圳数据_v1_健康环境.csv'
 
-with open(fp, 'r', encoding='gbk') as f:
-    df = pd.read_csv(fp, index_col=0, encoding='gbk')
+with open(fp, 'r', encoding='utf-8') as f:
+    df = pd.read_csv(fp, index_col=0, encoding='utf-8')
 df.fillna(-1)
 
 def cal_weight(x):
