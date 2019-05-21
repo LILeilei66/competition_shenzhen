@@ -151,6 +151,58 @@ class HealthEvaluation():
         ax.grid(True)
         plt.show()
 
+
+    def cal_note_3(self, df1, df2, df3):
+        print('df1:\n', df1)
+        print('df2:\n', df2)
+        print('df3:\n', df3)
+
+        # <editor-fold desc="df1">
+        note_people = np.matmul(self.weight_people, df1[:5].values)
+        note_service = np.matmul(self.weight_service, df1.iloc[5:10].values)
+        note_environment = np.matmul(self.weight_environment, df1.iloc[10:15].values)
+        note_society = np.matmul(self.weight_society, df1.iloc[15:17].values)
+        print(MSG_NOTES.format(note_people, note_service, note_environment, note_society))
+        values1 = [note_people, note_service, note_environment / 3, note_service, note_people]
+        # </editor-fold>
+        # Ê¹Í¼Ïñ±ÕºÏ
+
+        # <editor-fold desc="df2">
+        note_people = np.matmul(self.weight_people, df2[:5].values)
+        note_service = np.matmul(self.weight_service, df2.iloc[5:10].values)
+        note_environment = np.matmul(self.weight_environment, df2.iloc[10:15].values)
+        note_society = np.matmul(self.weight_society, df2.iloc[15:17].values)
+        print(MSG_NOTES.format(note_people, note_service, note_environment, note_society))
+        values2 = [note_people, note_service, note_environment / 3, note_service, note_people]
+        # </editor-fold>
+
+        # <editor-fold desc="df3">
+        note_people = np.matmul(self.weight_people, df3[:5].values)
+        note_service = np.matmul(self.weight_service, df3.iloc[5:10].values)
+        note_environment = np.matmul(self.weight_environment, df3.iloc[10:15].values)
+        note_society = np.matmul(self.weight_society, df3.iloc[15:17].values)
+        print(MSG_NOTES.format(note_people, note_service, note_environment, note_society))
+        values3 = [note_people, note_service, note_environment / 3, note_service, note_people]
+        # </editor-fold>
+
+        angles = np.linspace(0, 2 * np.pi, num=4, endpoint=False)
+        angles = np.concatenate((angles, [angles[0]]))
+        fig = plt.figure()
+        ax = fig.add_subplot(1, 2, 1, polar=True)
+        ax.plot(angles, values1, 'o-', linewidth=2, label=df1.name)
+        ax.fill(angles, values1, alpha=0.25)
+        ax.plot(angles, values2, 'o-', linewidth=2, label=df2.name)
+        ax.fill(angles, values2, alpha=0.25)
+        ax.plot(angles, values3, 'o-', linewidth=2, label=df3.name)
+        ax.fill(angles, values3, alpha=0.25)
+        ax.set_thetagrids(angles * 180 / np.pi, HEALTH_TYPES_EN)
+        ax.set_ylim(min(min(values1), min(values2), min(values3)) * 0.9, \
+                    max(max(values1), max(values2), max(values3)) * 1.1)
+        plt.title('Shenzhen_v1')
+        plt.legend(loc='best')
+        ax.grid(True)
+        plt.show()
+
 if __name__ == '__main__':
     health_evaluation = HealthEvaluation()
     health_evaluation.load_weights()
@@ -160,7 +212,7 @@ if __name__ == '__main__':
     except UnicodeDecodeError:
         df = pd.read_csv(fp, index_col=0, encoding='utf-8')
 
-    health_evaluation.cal_note_2(df.iloc[0], df.iloc[-1])
+    health_evaluation.cal_note_3(df.iloc[0], df.iloc[1], df.iloc[2])
 
 
 
