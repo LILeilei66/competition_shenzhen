@@ -44,5 +44,6 @@ class CalFunctions():
             wj = d[j] / sum(d)
             w[j] = wj  # 计算各样本的综合得分,用最原始的数据
 
-        w = pd.DataFrame(w)
+
+        w = pd.DataFrame(np.reshape(np.array(w), (1, -1)))
         return w

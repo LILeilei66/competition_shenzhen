@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$/第一问数据/北京数据_v4_健康人群.csv" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/第一问数据/北京数据_v4_健康服务.csv" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/第一问数据/北京数据_v4_健康社会.csv" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/第一问数据/天津数据_v1_健康人群.csv" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/第一问数据/天津数据_v1_健康环境.csv" charset="GBK" />
+    <file url="PROJECT" charset="GBK" />
+  </component>
+</project>
